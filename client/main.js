@@ -56,7 +56,9 @@ function scrollDown() {
 
 loginSubmit.onclick = () => {
     const name = loginName.value;
-    socket.emit('reqname', name);
+    if(name !== '') {
+        socket.emit('reqname', name);
+    }
 }
 
 socket.on('nametaken', (name)=> {
