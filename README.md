@@ -7,3 +7,6 @@ download repo and then run
 then 
 `npm start`
 default port is 2000 but can be changed in Settings.js
+
+# Demo
+There is a live demo running at https://secure-aes-chat.herokuapp.com/
