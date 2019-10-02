@@ -11,6 +11,9 @@ class User {
         this.socket.on('addmsg', (msg) => {
             User.sendToAll(msg,this);
         })
+        this.socket.on('addimg', (data) => {
+            User.sendImgToAll(data, this);
+        })
         this.socket.on('disconnect', () => {
             User.broadcast(`${this.name} left the chat`);
             User.list.splice(User.list.indexOf(this),1);
@@ -25,6 +28,11 @@ class User {
     static sendToAll(msg, sender) {
         User.list.map(user => {
             user.socket.emit('msg', {user:sender.name,text:msg})
+        })
+    }
+    static sendImgToAll(data, sender) {
+        User.list.map(user => {
+            user.socket.emit('img', {user:sender.name,src:data})
         })
     }
     static sendUsers() {
